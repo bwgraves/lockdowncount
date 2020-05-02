@@ -1,0 +1,138 @@
+body{
+	font-family:helvetica;
+	text-align:center;
+	background-color:white;
+}
+
+body #tardisLight{
+	display:none;
+}
+
+#main{
+	max-width:600px;
+	margin:0 auto;
+	margin-top:15vh;
+}
+
+h1{
+	font-size:650%;
+	margin-top:0;
+	color:#333;
+	margin-bottom:0;
+	
+}
+
+h2{
+	color:#999;
+	font-weight:normal;
+}
+
+a, .sep{
+	color:#555;
+	text-decoration:none;
+	font-size:90%;
+}
+
+/* ----- Option stuff ----- */
+
+.sep{
+	color:#ccc;
+}
+
+/* ------- Death Star ------- */
+
+.dark-mode-transition{
+	transition: background-color 0.1s linear;
+}
+
+.dark-mode{
+	background-color:#333;
+}
+
+.dark-mode h1{
+	color:hsl(0, 0%, 65%);
+}
+
+.dark-mode h2{
+	color:hsl(0, 0%, 45%);
+}
+
+.dark-mode a{
+	color:hsl(0, 0%, 40%);
+}
+
+.dark-mode .sep{
+	color:hsl(0, 0%, 30%);
+}
+
+/* ------- Doctor who ------- */
+
+.dw{
+	transition: background-color 0.1s linear;
+	background-color:#1F2D50;
+	background:url('dw.jpg');
+}
+
+.dw h1{
+	color:#3B4666;
+}
+
+#main{
+	background-size: 100% 100%;
+}
+
+/* ------- 2000s mode ------ */
+.cs{
+	background-color:lime;
+	font-family:comic sans ms;
+}
+
+.cs h1{
+	color:red;
+}
+
+.cs h2{
+	color:blue;
+}
+
+/* ------- Hacker mode ------- */
+.hm{
+	background-color:black;
+	font-family:Courier New, sans-serif;
+}
+
+.hm a{
+	color:lime;
+}
+
+.sep{
+	color:hsl(0, 0%, 30%);
+}
+
+/* ------ Blue Mode ------ */
+
+.bm{
+	background-color:#1F2D50;
+}
+
+.bm h1{
+	color: hsl(0, 0%, 70%);
+}
+
+/* -------- Utilities -------- */
+
+.hide{
+	display:none;
+}
+
+.inline{
+	display:inline;
+}
+
+.nsfw{
+	color:red;
+}
+
+.m-t-15{
+	margin-top:15px!important;
+}
