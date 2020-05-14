@@ -29,7 +29,7 @@ $("#darkLink").click(function () {
 
 const currentDate = new Date();
 const lockdownStart = new Date('03/23/2020');
-const nextReview = new Date('05/07/2020');
+const nextReview = new Date('05/28/2020');
 setTimeout(function(){
 	$('#daysSince').text(Math.ceil(Math.abs(currentDate - lockdownStart) / (1000 * 60 * 60 * 24)));
 	$('#govReview').text(Math.ceil(Math.abs(nextReview - currentDate) / (1000 * 60 * 60 * 24)));
