@@ -18,7 +18,12 @@ if(initMode != null){
 }
 
 var initCustom = Cookies.get('customMessages');
-setCustomMessages(JSON.parse(initCustom));
+if (initCustom != null){
+  setCustomMessages(JSON.parse(initCustom));
+}else{
+  setCustomMessages({});
+}
+
 
 // Atticbay page view
 $.ajax({
