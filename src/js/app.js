@@ -18,11 +18,7 @@ if(initMode != null){
 }
 
 var initCustom = Cookies.get('customMessages');
-if(initCustom != null){
-  setCustomMessages(JSON.parse(initCustom));
-}else{
-  setDefaultMessages();
-}
+setCustomMessages(JSON.parse(initCustom));
 
 // Atticbay page view
 $.ajax({
@@ -79,18 +75,32 @@ $(".more-settings").click(function (){
 })
 
 $("#set-messages").click(function (){
-  // Please please clean first
+  var dayMessage = stripHtml($("#custom-day-message").val());
+  var govMessage = stripHtml($("#custom-gov-message").val());
+
+  if (dayMessage.includes("$d")){
+    $("#day-message-validation").addClass("hide");
+  }else{
+    $("#day-message-validation").removeClass("hide");
+    dayMessage = null;
+  }
+
+  if (govMessage.includes("$d")){
+    $("#gov-message-validation").addClass("hide");
+  }else{
+    $("#gov-message-validation").removeClass("hide");
+    govMessage = null;
+  }
+
 
   var customMessages =
   {
-    "dayMessage": stripHtml($("#custom-day-message").val()),
-    "govMessage": stripHtml($("#custom-gov-message").val())
+    "dayMessage": dayMessage,
+    "govMessage": govMessage
   };
 
   // Set the messages cookie
   Cookies.set('customMessages', JSON.stringify(customMessages), { expires: 365 });
-
-  console.log("the text is" + $("#custom-day-message").text())
 
   // Run the method to update the messages
   setCustomMessages(customMessages);
@@ -101,12 +111,6 @@ $("#reset-messages").click(function(){
   setDefaultMessages()
 });
 
-function setDefaultMessages(){
-  // Set the messages on the page
-  $("#daysSinceText").html('Day ' + '<span id="daysSince" class="odometer">' + daysSinceStart + '</span>')
-  $("#reviewDaysText").html('Next government review in ' + '<span id="daysSince" class="odometer">' + daysUntilReview + '</span> days')
-}
-
 function setCustomMessages(customMessages){
   var dayMessage = customMessages["dayMessage"];
   var govMessage = customMessages["govMessage"];
@@ -114,22 +118,20 @@ function setCustomMessages(customMessages){
   // Set the inputs
   $("#custom-day-message").text(dayMessage);
   $("#custom-gov-message").text(govMessage);
-
-  if (dayMessage.includes("$d")){
-    dayMessage = dayMessage.replace('$d', '<span id="daysSince" class="odometer">' + daysSinceStart + '</span>')
-    $("#daysSinceText").html(dayMessage);
-    $("#day-message-validation").addClass("hide");
-  }else{
-    $("#day-message-validation").removeClass("hide");
+  
+  if (dayMessage == null){
+    dayMessage = "Day $d";
   }
 
-  if (govMessage.includes("$d")){
-    govMessage = govMessage.replace('$d', '<span id="daysSince" class="odometer">' + daysUntilReview + '</span>')
-    $("#reviewDaysText").html(govMessage);
-    $("#gov-message-validation").addClass("hide");
-  }else{
-    $("#gov-message-validation").removeClass("hide");
+  if (govMessage == null){
+    govMessage = "Next government review in $d days"
   }
+
+  dayMessage = dayMessage.replace('$d', '<span id="daysSince" class="odometer">' + daysSinceStart + '</span>')
+  govMessage = govMessage.replace('$d', '<span id="daysSince" class="odometer">' + daysUntilReview + '</span>')
+
+  $("#daysSinceText").html(dayMessage);
+  $("#reviewDaysText").html(govMessage);
 }
 
 function stripHtml(htmlString){
