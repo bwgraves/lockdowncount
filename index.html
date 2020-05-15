@@ -6,14 +6,47 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="./assets/css/odometer-theme-default.css" />
 		<link rel="stylesheet" href="./assets/css/app.css" />
+		<link rel="stylesheet" href="https://unpkg.com/chota@latest">
 	</head>
 	<body>
 		<div id="main">
-			<h1>Day <span id="daysSince" class="odometer"></span></h1>
-			<h2>Next government review in <span id="govReview" class="odometer"></span> days</h2>
+			<h1 id="daysSinceText"></h1>
+			<h2 id="reviewDaysText"></h2>
 			<a target="_blank" href="https://gov.uk/coronavirus">gov.uk/coronavirus</a>
 			<span class="sep">|</span>
 			<a href="javascript:void(0)" data-mode="dark-mode" data-on="dark mode" data-off="lightmode">dark mode</a>
+			<span class="sep">|</span>
+			<a href="javascript:void(0)" class="more-settings">more settings</a>
+			<div class="section text-left hide" id="settings-section">
+				<div class="section-header">
+					<div class="row m-b-0">
+						<div class="col m-b-0">
+							<h3 class="m-t-0 m-b-0">settings</h3>
+						</div>
+						<div class="col m-b-0 text-right">
+							<h3 class="m-t-0 m-b-0 text-grey more-settings"><a href="javascript:void()">close</a></h3>
+						</div>
+
+					</div>
+				</div>
+				<div class="section-content">
+					<div class="sub-section">
+						<h4 class="m-t-0 border-bottom">custom messages</h4>
+						<div class="m-b-15">
+							<label for="custom-day-message">day message</label>
+							<input id="custom-day-message" type="text" placeholder="eg: It's been $d whole days.">
+							<span class="text-error hide" id="day-message-validation">Please use the $d variable in the message.</span>
+						</div>
+						<div class="m-b-15">
+							<label for="custom-gov-message">government message</label>
+							<input id="custom-gov-message" type="text" placeholder="eg: next government update in $d days.">
+							<span class="text-error hide" id="gov-message-validation">Please use the $d variable in the message.</span>
+						</div>
+						<button id="set-messages" class="button primary m-t-15">set</button>
+						<button id="reset-messages" class="button m-t-15">reset</button>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script src="./dist/js/app.js"></script>
 	</body>
