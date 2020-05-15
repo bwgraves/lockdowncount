@@ -34,6 +34,35 @@ a, .sep{
 	font-size:90%;
 }
 
+hr{
+	border:0.1px solid hsl(0, 0%, 95%);
+}
+
+/* ----- Section stuff ----- */
+
+.section{
+	border-radius:8px;
+	border:1px solid #eee;
+	margin-top:25px;
+}
+
+.section h3{
+	background-color:#eee;
+	margin-top:0;
+	padding:10px;
+	font-weight:normal;
+	font-size:100%;
+}
+
+.section-content{
+	padding:10px;
+}
+
+.section-content h4{
+	font-weight:normal;
+
+}
+
 /* ----- Option stuff ----- */
 
 .sep{
@@ -123,6 +152,10 @@ a, .sep{
 
 /* -------- Utilities -------- */
 
+.text-left{
+	text-align:left;
+}
+
 .hide{
 	display:none;
 }
@@ -133,6 +166,10 @@ a, .sep{
 
 .nsfw{
 	color:red;
+}
+
+.m-t-0{
+	margin-top:0px!important;
 }
 
 .m-t-15{
