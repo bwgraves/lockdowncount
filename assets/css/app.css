@@ -41,17 +41,23 @@ hr{
 /* ----- Section stuff ----- */
 
 .section{
-	border-radius:8px;
+	border-radius:4px;
 	border:1px solid #eee;
 	margin-top:25px;
 }
 
 .section h3{
-	background-color:#eee;
 	margin-top:0;
 	padding:10px;
 	font-weight:normal;
 	font-size:100%;
+	color:rgba(0, 0, 0, 0.6);
+}
+
+.section-header{
+	background-color:hsl(0, 0%, 90%);
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
 }
 
 .section-content{
@@ -60,7 +66,22 @@ hr{
 
 .section-content h4{
 	font-weight:normal;
+}
 
+.section-content a, .section-content span{
+	font-size:90%;
+}
+
+.section-content span{
+	color:hsl(0, 0%, 40%);
+}
+
+.section-content a:hover{
+	border-bottom:1px solid #ccc;
+}
+
+.section-content a{
+	color:hsl(0, 0%, 20%);
 }
 
 /* ----- Option stuff ----- */
@@ -94,6 +115,22 @@ hr{
 
 .dark-mode .sep{
 	color:hsl(0, 0%, 30%);
+}
+
+.dark-mode .section{
+	border:0.5px solid #222;
+}
+
+.dark-mode .section-header{
+	background-color:hsl(0, 0%, 15%);
+}
+
+.dark-mode .section-header h3{
+	color:hsl(0, 0%, 40%)!important;
+}
+
+.dark-mode .section-content {
+	color:hsl(0, 0%, 40%);
 }
 
 /* ------- Doctor who ------- */

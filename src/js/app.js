@@ -60,3 +60,11 @@ $("a[data-mode]").click(function () {
   console.log("you clicked " + $(this).attr("data-mode"))
   toggleMode($(this).attr("data-mode"), $(this));
 })
+
+$("#more-settings").click(function (){
+  var defaultTxt = "more-settings";
+
+  $(this).text() = (defaultTxt ?
+
+  $("#settings-section").toggleClass("hide");
+})
