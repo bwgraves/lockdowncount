@@ -13,6 +13,7 @@ body #tardisLight{
 	max-width:900px;
 	margin:0 auto;
 	margin-top:15vh;
+	padding:20px;
 }
 
 h1{
@@ -21,6 +22,12 @@ h1{
 	color:#333;
 	margin-bottom:0!important;
 	font-weight:bold!important;
+}
+
+@media only screen and (max-width: 600px) {
+  h1{
+		font-size:300%!important;
+	}
 }
 
 h2{
