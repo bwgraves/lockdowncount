@@ -10,7 +10,6 @@ body #tardisLight{
 }
 
 #main{
-	max-width:900px;
 	margin:0 auto;
 	margin-top:15vh;
 	padding:20px;
@@ -54,6 +53,9 @@ label{
 .section{
 	border-radius:4px;
 	border:1px solid #eee;
+	margin-top:25px;
+	max-width:900px;
+	margin:0 auto;
 	margin-top:25px;
 }
 
