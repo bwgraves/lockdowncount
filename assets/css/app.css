@@ -71,6 +71,10 @@ label{
 	border-top-right-radius: 4px;
 }
 
+.section-header .row{
+	flex-wrap: nowrap;
+}
+
 .section-content{
 	padding:25px;
 	background-color:white;
