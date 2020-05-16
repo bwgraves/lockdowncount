@@ -83,8 +83,11 @@ $("#set-messages").click(function (){
   var dayMessage = stripHtml($("#custom-day-message").val());
   var govMessage = stripHtml($("#custom-gov-message").val());
 
-  if (dayMessage.includes("$d")){
+  if (dayMessage.includes("$d")  || dayMessage == null){
     $("#day-message-validation").addClass("hide");
+  }else if (dayMessage.length == 0){
+    dayMessage = null;
+    $("#gov-message-validation").addClass("hide");
   }else{
     $("#day-message-validation").removeClass("hide");
     dayMessage = null;
@@ -92,10 +95,15 @@ $("#set-messages").click(function (){
 
   if (govMessage.includes("$d")){
     $("#gov-message-validation").addClass("hide");
+    console.log("The gov message: " + govMessage);
+  }else if (govMessage.length == 0){
+    govMessage = null;
+    $("#gov-message-validation").addClass("hide");
   }else{
     $("#gov-message-validation").removeClass("hide");
     govMessage = null;
   }
+
 
 
   var customMessages =
@@ -113,16 +121,12 @@ $("#set-messages").click(function (){
 
 $("#reset-messages").click(function(){
   Cookies.remove('customMessages');
-  setDefaultMessages()
+  setCustomMessages({})
 });
 
 function setCustomMessages(customMessages){
   var dayMessage = customMessages["dayMessage"];
   var govMessage = customMessages["govMessage"];
-
-  // Set the inputs
-  $("#custom-day-message").text(dayMessage);
-  $("#custom-gov-message").text(govMessage);
   
   if (dayMessage == null){
     dayMessage = "Day $d";
@@ -131,6 +135,10 @@ function setCustomMessages(customMessages){
   if (govMessage == null){
     govMessage = "Next government review in $d days"
   }
+
+  // Set the inputs
+  $("#custom-day-message").val(dayMessage);
+  $("#custom-gov-message").val(govMessage);
 
   dayMessage = dayMessage.replace('$d', '<span id="daysSince" class="odometer">' + daysSinceStart + '</span>')
   govMessage = govMessage.replace('$d', '<span id="daysSince" class="odometer">' + daysUntilReview + '</span>')
