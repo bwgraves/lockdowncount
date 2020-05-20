@@ -127,7 +127,7 @@ $("#reset-messages").click(function(){
 function setCustomMessages(customMessages){
   var dayMessage = customMessages["dayMessage"];
   var govMessage = customMessages["govMessage"];
-  
+
   if (dayMessage == null){
     dayMessage = "Day $d";
   }
@@ -150,3 +150,12 @@ function setCustomMessages(customMessages){
 function stripHtml(htmlString){
   return htmlString.replace(/<[^>]+>/g, '');
 }
+
+function SmoothScroll(anchorId){
+  var aTag = $("a[name='"+ anchorId +"']");
+  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+
+$(".smooth").click(function () {
+  SmoothScroll($(this).attr("href").substr(1));
+})
