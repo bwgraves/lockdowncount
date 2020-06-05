@@ -17,9 +17,43 @@ if(initMode != null){
   link.text(link.attr("data-off"));
 }
 
-var initCustom = Cookies.get('customMessages');
+// If the share url is set, get that object, otherwise get the cookie object.
+
+var initCustom;
+
+var params = new URLSearchParams(window.location.search);
+console.log(params.has('view')); // true
+if (params.has('view')){
+  //console.log('has view')
+  // Make the api request
+  initCustom = GetSharedView(params.get('view'));
+}
+
+function GetSharedView(viewId){
+  var result = null;
+  var scriptUrl = "https://atticbay.co.uk/ab/api/lockdown.php?key=key&action=getview&viewid=" + viewId;
+  $.ajax({
+    url: scriptUrl,
+    type: 'get',
+    dataType: 'json',
+    async: false,
+    success: function(data) {
+        result = data;
+    }
+  });
+  return result;
+}
+
+if(initCustom == null){
+  var cookieValue = Cookies.get('customMessages');
+  if(cookieValue != null){
+    initCustom = JSON.parse(cookieValue);
+  }
+}
+
 if (initCustom != null){
-  setCustomMessages(JSON.parse(initCustom));
+  console.log(initCustom)
+  setCustomMessages(initCustom);
 }else{
   setCustomMessages({});
 }
