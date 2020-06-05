@@ -179,9 +179,6 @@ $("#share-button").click(function (){
     var viewId = InsertSharedView(dayMessage, govMessage);
     $("#share-url").val("https://lockdowncount.co.uk?v=" + viewId);
   }
-
-  // Highlight the text when you click on it
-  $("#share-url").select();
 })
 
 function GetSharedView(viewId){
