@@ -208,7 +208,7 @@ label{
 }
 
 .hide{
-	display:none;
+	display:none!important;
 }
 
 .border-bottom{
@@ -217,7 +217,7 @@ label{
 }
 
 .inline{
-	display:inline;
+	display:inline!important;
 }
 
 .nsfw{
@@ -256,6 +256,10 @@ label{
 	margin-bottom:15px!important;
 }
 
-.w-50{
-	width:50px;
+.fs-80{
+	font-size:80%!important;
+}
+
+.w-250{
+	width:250px!important;
 }

@@ -4,6 +4,9 @@ const currentDate = new Date();
 const lockdownStart = new Date('03/23/2020');
 const nextReview = new Date('06/18/2020');
 
+const DEFAULT_DAY_MESSAGE = "Day $d";
+const DEFAULT_GOV_MESSAGE = "Next government review in $d days";
+
 var daysSinceStart = Math.ceil(Math.abs(currentDate - lockdownStart) / (1000 * 60 * 60 * 24));
 var daysUntilReview = Math.ceil(Math.abs(nextReview - currentDate) / (1000 * 60 * 60 * 24));
 
@@ -22,26 +25,8 @@ if(initMode != null){
 var initCustom;
 
 var params = new URLSearchParams(window.location.search);
-console.log(params.has('view')); // true
-if (params.has('view')){
-  //console.log('has view')
-  // Make the api request
-  initCustom = GetSharedView(params.get('view'));
-}
-
-function GetSharedView(viewId){
-  var result = null;
-  var scriptUrl = "https://atticbay.co.uk/ab/api/lockdown.php?key=key&action=getview&viewid=" + viewId;
-  $.ajax({
-    url: scriptUrl,
-    type: 'get',
-    dataType: 'json',
-    async: false,
-    success: function(data) {
-        result = data;
-    }
-  });
-  return result;
+if (params.has('v')){
+  initCustom = GetSharedView(params.get('v'));
 }
 
 if(initCustom == null){
@@ -52,7 +37,6 @@ if(initCustom == null){
 }
 
 if (initCustom != null){
-  console.log(initCustom)
   setCustomMessages(initCustom);
 }else{
   setCustomMessages({});
@@ -73,7 +57,6 @@ $.ajax({
 
 $("#darkLink").click(function () {
 	toggleDarkMode();
-	console.log("clicked");
 });
 
 setTimeout(function(){
@@ -103,7 +86,6 @@ function toggleMode(cssClass, modeLink){
 }
 
 $("a[data-mode]").click(function () {
-  console.log("you clicked " + $(this).attr("data-mode"))
   toggleMode($(this).attr("data-mode"), $(this));
 })
 
@@ -129,7 +111,6 @@ $("#set-messages").click(function (){
 
   if (govMessage.includes("$d")){
     $("#gov-message-validation").addClass("hide");
-    console.log("The gov message: " + govMessage);
   }else if (govMessage.length == 0){
     govMessage = null;
     $("#gov-message-validation").addClass("hide");
@@ -137,8 +118,6 @@ $("#set-messages").click(function (){
     $("#gov-message-validation").removeClass("hide");
     govMessage = null;
   }
-
-
 
   var customMessages =
   {
@@ -179,6 +158,60 @@ function setCustomMessages(customMessages){
 
   $("#daysSinceText").html(dayMessage);
   $("#reviewDaysText").html(govMessage);
+}
+
+// Share button handler
+$("#share-button").click(function (){
+  $("#share-url").removeClass("hide");
+
+  var dayMessage = stripHtml($("#custom-day-message").val());
+  var govMessage = stripHtml($("#custom-gov-message").val());
+
+  var customMessages =
+  {
+    "dayMessage" : stripHtml($("#custom-day-message").val()),
+    "govMessage" : stripHtml($("#custom-gov-message").val())
+  };
+
+  if (dayMessage == DEFAULT_DAY_MESSAGE && govMessage == DEFAULT_GOV_MESSAGE){
+    $("#share-url").val("https://lockdowncount.co.uk");
+  }else{
+    var viewId = InsertSharedView(dayMessage, govMessage);
+    $("#share-url").val("https://lockdowncount.co.uk?v=" + viewId);
+  }
+
+  // Highlight the text when you click on it
+  $("#share-url").select();
+})
+
+function GetSharedView(viewId){
+  var result = null;
+  var scriptUrl = "https://atticbay.co.uk/ab/api/lockdown.php?key=key&action=getview&viewid=" + viewId;
+  $.ajax({
+    url: scriptUrl,
+    type: 'get',
+    dataType: 'json',
+    async: false,
+    success: function(data) {
+        result = data;
+    }
+  });
+  return result;
+}
+
+function InsertSharedView(day, gov){
+  var result = null;
+  var scriptUrl = "https://atticbay.co.uk/ab/api/lockdown.php?action=insertview&key=key&day=" + day + "&gov=" + gov;
+  $.ajax({
+    url: scriptUrl,
+    type: 'get',
+    dataType: 'json',
+    async: false,
+    success: function(data) {
+        result = data;
+    }
+  });
+  return result["viewid"];
 }
 
 function stripHtml(htmlString){
