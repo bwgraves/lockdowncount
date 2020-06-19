@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 
 const currentDate = new Date();
 const lockdownStart = new Date('03/23/2020');
-const nextReview = new Date('06/18/2020');
+const nextReview = new Date('06/25/2020');
 
 const DEFAULT_DAY_MESSAGE = "Day $d";
 const DEFAULT_GOV_MESSAGE = "Next government review in $d days";
