@@ -8,7 +8,10 @@ const DEFAULT_DAY_MESSAGE = "Day $d";
 const DEFAULT_GOV_MESSAGE = "Next government review in $d days";
 
 var daysSinceStart = Math.ceil(Math.abs(currentDate - lockdownStart) / (1000 * 60 * 60 * 24));
-var daysUntilReview = Math.ceil(Math.abs(nextReview - currentDate) / (1000 * 60 * 60 * 24));
+
+//var daysUntilReview = Math.ceil(Math.abs(nextReview - currentDate) / (1000 * 60 * 60 * 24));
+//They change the review data frequently so not sure what to put at this point.
+var daysUntilReview = "?";
 
 //Set the mode initally
 var initMode = Cookies.get('mode');
