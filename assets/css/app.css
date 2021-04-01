@@ -3,6 +3,7 @@ body{
 	text-align:center;
 	background-color:white;
 	transition: background-color 0.1s linear;
+
 }
 
 body #tardisLight{
@@ -31,7 +32,7 @@ h1{
 }
 
 h2{
-	color:#999;
+	color:#777;
 	font-weight:normal;
 }
 
@@ -133,15 +134,11 @@ label{
 }
 
 .dark-mode h2{
-	color:hsl(0, 0%, 45%);
+	color:hsl(0, 0%, 55%);
 }
 
-.dark-mode a{
-	color:hsl(0, 0%, 40%);
-}
-
-.dark-mode .sep{
-	color:hsl(0, 0%, 30%);
+.dark-mode a, .dark-mode .sep{
+	color:hsl(0, 0%, 65%)!important;
 }
 
 /* ------- Doctor who ------- */

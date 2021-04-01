@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 	<head>
 		<title>Days since the lockdown started in the UK</title>
 		<meta charset="utf-8">
@@ -9,51 +9,53 @@
 		<link rel="stylesheet" href="https://unpkg.com/chota@latest">
 	</head>
 	<body>
-		<div id="main">
-			<a name="top"></a>
-			<h1 id="daysSinceText"></h1>
-			<h2 id="reviewDaysText"></h2>
-			<a target="_blank" href="https://gov.uk/coronavirus">gov.uk/coronavirus</a>
-			<span class="sep">|</span>
-			<a href="javascript:void(0)" data-mode="dark-mode" data-on="dark mode" data-off="light mode">dark mode</a>
-			<span class="sep">|</span>
-			<a target="_blank" href="https://github.com/bwgraves/lockdowncount">github</a>
-			<span class="sep">|</span>
-			<a href="#settings" class="more-settings smooth">more settings</a>
-			<div class="section text-left m-b-15 hide" id="settings-section">
-				<a name="settings"></a>
-				<div class="section-header">
-					<div class="row m-b-0">
-						<div class="col m-b-0">
-							<h3 class="m-t-0 m-b-0">settings</h3>
-						</div>
-						<div class="col m-b-0 text-right">
-							<h3 class="m-t-0 m-b-0 text-grey more-settings"><a class="smooth" href="#top">close</a></h3>
+		<main>
+			<div id="main">
+				<a name="top"></a>
+				<h1 id="daysSinceText"></h1>
+				<h2 id="reviewDaysText"></h2>
+				<a target="_blank" href="https://gov.uk/coronavirus">gov.uk/coronavirus</a>
+				<span class="sep">|</span>
+				<a href="javascript:void(0)" data-mode="dark-mode" data-on="dark mode" data-off="light mode">dark mode</a>
+				<span class="sep">|</span>
+				<a target="_blank" href="https://github.com/bwgraves/lockdowncount">github</a>
+				<span class="sep">|</span>
+				<a href="#settings" class="more-settings smooth">more settings</a>
+				<div class="section text-left m-b-15 hide" id="settings-section">
+					<a name="settings"></a>
+					<div class="section-header">
+						<div class="row m-b-0">
+							<div class="col m-b-0">
+								<h3 class="m-t-0 m-b-0">settings</h3>
+							</div>
+							<div class="col m-b-0 text-right">
+								<h3 class="m-t-0 m-b-0 text-grey more-settings"><a class="smooth" href="#top">close</a></h3>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="section-content">
-					<p class="text-grey text-small">Settings will be saved for future page visits.</p>
-					<div class="sub-section">
-						<h4 class="m-t-0 border-bottom">custom messages</h4>
-						<div class="m-b-15">
-							<label for="custom-day-message">day message</label>
-							<input id="custom-day-message" type="text" placeholder="eg: It's been $d whole days.">
-							<span class="text-error hide" id="day-message-validation">Please use the $d variable in the custom day message.</span>
+					<div class="section-content">
+						<p class="text-grey text-small">Settings will be saved for future page visits.</p>
+						<div class="sub-section">
+							<h4 class="m-t-0 border-bottom">custom messages</h4>
+							<div class="m-b-15">
+								<label for="custom-day-message">day message</label>
+								<input id="custom-day-message" type="text" placeholder="eg: It's been $d whole days.">
+								<span class="text-error hide" id="day-message-validation">Please use the $d variable in the custom day message.</span>
+							</div>
+							<div class="m-b-15">
+								<label for="custom-gov-message">government message</label>
+								<input id="custom-gov-message" type="text" placeholder="eg: next government update in $d days.">
+								<span class="text-error hide" id="gov-message-validation">Please use the $d variable in the custom government message.</span>
+							</div>
+							<button id="set-messages" class="button primary m-t-15">set</button>
+							<button id="reset-messages" class="button m-t-15">reset</button>
+							<button id="share-button" class="inline button primary outline pull-right m-t-15 fs-80">share custom page</button>
+							<input id="share-url" class="pull-right m-t-15 w-250 hide fs-80 p-b-10" type="textbox" aria-label="custom view url" value="" />
 						</div>
-						<div class="m-b-15">
-							<label for="custom-gov-message">government message</label>
-							<input id="custom-gov-message" type="text" placeholder="eg: next government update in $d days.">
-							<span class="text-error hide" id="gov-message-validation">Please use the $d variable in the custom government message.</span>
-						</div>
-						<button id="set-messages" class="button primary m-t-15">set</button>
-						<button id="reset-messages" class="button m-t-15">reset</button>
-						<button id="share-button" class="inline button primary outline pull-right m-t-15 fs-80">share custom page</button>
-						<input id="share-url" class="pull-right m-t-15 w-250 hide fs-80 p-b-10" type="textbox" value="" />
 					</div>
 				</div>
 			</div>
-		</div>
+		</main>
 		<script src="./dist/js/app.js"></script>
 	</body>
 </html>
